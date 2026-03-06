@@ -8,11 +8,7 @@
   width: 100px;
 }
 
-h1 {
-  align-self: top, center;
-  padding: 10px;
-  color: rgb(247, 248, 240);
-}
+
 
 .a{
   align-self: center;
@@ -34,6 +30,18 @@ h1 {
   background-color: rgb(122, 170, 206);
   
 } 
+
+h1 {
+  align-self: top, center;
+  padding: 10px;
+  color: rgb(247, 248, 240);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
 
 .a {
   grid-area: a;
