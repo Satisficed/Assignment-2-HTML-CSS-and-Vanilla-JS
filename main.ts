@@ -8,7 +8,7 @@ form?.addEventListener("submit", (event) => {
     const a: number = Number(formData.get("a"));
     
     if (a === 0) {
-        (document.getElementById("result") as HTMLInputElement).value = "Not A Cubic";
+        (document.getElementById("result") as HTMLInputElement).value = "a-value cannot be 0";
         console.log("Case 0: a-value is zero");
         return;
     }
@@ -23,16 +23,22 @@ form?.addEventListener("submit", (event) => {
     
     if (checkRoots < 0) {
         (document.getElementById("result") as HTMLInputElement).value = "No roots";
-        console.log("Case 1");
+        console.log("Case 1: 3 Real Roots");
     } else if (checkRoots > 0) {d 
         const rootOne = (-b + Math.sqrt(checkRoots)) / (2 * a);
         const rootTwo = (-b - Math.sqrt(checkRoots)) / (2 * a);
         (document.getElementById("result") as HTMLInputElement).value = `x=${rootOne}, x2=${rootTwo}`;
-        console.log("Case 2");
+        console.log("Case 2: 1 Root ");
     } else {
+        if (p === 0 && q === 0){
         const rootOne = (-b + Math.sqrt(checkRoots)) / (2 * a);
         (document.getElementById("result") as HTMLInputElement).value = `x=${rootOne}`;
-        console.log("Case 3");
+        console.log("Case 3");  
+        } else if (p != 0){
+        const rootOne = (-b + Math.sqrt(checkRoots)) / (2 * a);
+        (document.getElementById("result") as HTMLInputElement).value = `x=${rootOne}`;
+        console.log("Case 3");  
+        }
     }
 });
 
