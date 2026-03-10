@@ -8,9 +8,7 @@
   width: 100px;
 }
 
-
-
-.a{
+.a {
   align-self: center;
 }
 
@@ -28,8 +26,7 @@
   height: 200;
   padding: 5;
   background-color: rgb(122, 170, 206);
-  
-} 
+}
 
 h1 {
   align-self: top, center;
@@ -62,5 +59,3 @@ form {
   grid-area: d;
   background-color: violet;
 }
-
-
