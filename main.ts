@@ -29,15 +29,15 @@ form?.addEventListener("submit", (event) => {
     18 * a * b * c * d;
   const h = -b / (3 * a);
   // const y =
-    (-q / 2 + Math.sqrt(discriminant)) ** (1 / 3) +
-    (-q / 2 - Math.sqrt(discriminant)) ** (1 / 3);
+  //  (-q / 2 + Math.sqrt(discriminant)) ** (1 / 3) +
+  //  (-q / 2 - Math.sqrt(discriminant)) ** (1 / 3);
   // const x = y + h;
   console.log(discriminant);
-  console.log("Testing Values:", q, p);
+  console.log("Testing Values:", q, p, ((p / 3) ** 3));
   console.log(a, b, c, d);
   if (discriminant < 0) {
     const k = 2 * Math.sqrt(-p / 3);
-    const theta = (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-(p / 3) ** 3)));
+    const theta = (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-Math.pow((p / 3), 3))));
     const y1 = 2 * Math.sqrt(-p / 3) * Math.cos(theta);
     const y2 = 2 * Math.sqrt(-p / 3) * Math.cos(theta + (2 * Math.PI) / 3);
     const y3 = 2 * Math.sqrt(-p / 3) * Math.cos(theta + (4 * Math.PI) / 3);
@@ -49,13 +49,18 @@ form?.addEventListener("submit", (event) => {
     console.log("Case 1: 3 Real Roots");
     console.log("Discriminant:", discriminant);
     console.log("Parameters:", { p, q, k, theta });
-    console.log(x1, y1);
-    console.log(x2, y2);
-    console.log(x3, y3);
+    //console.log(x1, y1);
+    //console.log(x2, y2);
+    //console.log(x3, y3);
   } else if (discriminant > 0) {
-    d;
+    const U = -q / 2 + Math.sqrt((q / 2) ** 2 + (p / 3) ** 3);
+    const V = -q / 2 - Math.sqrt((q / 2) ** 2 + (p / 3) ** 3);
+    const u = Math.cbrt(U);
+    const v = Math.cbrt(V);
+    // const x = y + h;
     const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
     const rootTwo = (-b - Math.sqrt(discriminant)) / (2 * a);
+    console.log("Parameters:", { p, q, U, V });
     (document.getElementById("result") as HTMLInputElement).value =
       `x=${rootOne}, x2=${rootTwo}`;
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
