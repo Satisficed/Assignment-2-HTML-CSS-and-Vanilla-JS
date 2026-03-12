@@ -54,6 +54,7 @@ form?.addEventListener("submit", (event) => {
     //console.log(x1, y1);
     //console.log(x2, y2);
     //console.log(x3, y3);
+    
   } else if (discriminant > 0) {
     const U = -q / 2 + Math.sqrt((q / 2) ** 2 + (p / 3) ** 3);
     const V = -q / 2 - Math.sqrt((q / 2) ** 2 + (p / 3) ** 3);
