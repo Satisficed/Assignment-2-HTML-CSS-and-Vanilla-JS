@@ -33,19 +33,21 @@ form?.addEventListener("submit", (event) => {
   //  (-q / 2 - Math.sqrt(discriminant)) ** (1 / 3);
   // const x = y + h;
   console.log(discriminant);
-  console.log("Testing Values:", q, p, ((p / 3) ** 3));
+  console.log("Testing Values:", q, p, (p / 3) ** 3);
   console.log(a, b, c, d);
   if (discriminant < 0) {
     const k = 2 * Math.sqrt(-p / 3);
-    const theta = (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-Math.pow((p / 3), 3))));
+    const theta =
+      (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-Math.pow(p / 3, 3))));
     const y1 = 2 * Math.sqrt(-p / 3) * Math.cos(theta);
     const y2 = 2 * Math.sqrt(-p / 3) * Math.cos(theta + (2 * Math.PI) / 3);
     const y3 = 2 * Math.sqrt(-p / 3) * Math.cos(theta + (4 * Math.PI) / 3);
     const x1 = y1 + h;
     const x2 = y2 + h;
     const x3 = y3 + h;
-    (document.getElementById("result") as HTMLInputElement).value =
-      `${a}x^3,${b}x^2,${c}x,${d}`;
+    (
+      document.getElementById("result") as HTMLInputElement
+    ).value = `${a}x^3,${b}x^2,${c}x,${d}`;
     console.log("Case 1: 3 Real Roots");
     console.log("Discriminant:", discriminant);
     console.log("Parameters:", { p, q, k, theta });
@@ -61,19 +63,22 @@ form?.addEventListener("submit", (event) => {
     const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
     const rootTwo = (-b - Math.sqrt(discriminant)) / (2 * a);
     console.log("Parameters:", { p, q, U, V });
-    (document.getElementById("result") as HTMLInputElement).value =
-      `x=${rootOne}, x2=${rootTwo}`;
+    (
+      document.getElementById("result") as HTMLInputElement
+    ).value = `x=${rootOne}, x2=${rootTwo}`;
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
   } else {
     if (p === 0 && q === 0) {
       const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-      (document.getElementById("result") as HTMLInputElement).value =
-        `x=${rootOne}`;
+      (
+        document.getElementById("result") as HTMLInputElement
+      ).value = `x=${rootOne}`;
       console.log("Case 3: 1 Real Root, Double Roots");
     } else if (p != 0) {
       const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-      (document.getElementById("result") as HTMLInputElement).value =
-        `x=${rootOne}`;
+      (
+        document.getElementById("result") as HTMLInputElement
+      ).value = `x=${rootOne}`;
       console.log("Case 4: Triple Roots");
     }
   }
