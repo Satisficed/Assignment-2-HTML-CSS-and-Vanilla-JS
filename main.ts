@@ -20,22 +20,35 @@ form?.addEventListener("submit", (event) => {
 
   const p = (3 * a * c - b ** 2) / (3 * a ** 2);
   const q = (27 * a ** 2 * d - 9 * a * b * c + 2 * b ** 3) / (27 * a ** 3);
-  // const CD = (q / 2) ** 2 + (p / 3) ** 2;
+
   const discriminant =
+    18 * a * b * c * d -
+    4 * b ** 3 * d +
     b ** 2 * c ** 2 -
     4 * a * c ** 3 -
-    4 * b ** 3 * d -
-    27 * a ** 2 * d ** 2 +
-    18 * a * b * c * d;
+    27 * a ** 2 * d ** 2;
+
   const h = -b / (3 * a);
-  // const y =
-  //  (-q / 2 + Math.sqrt(discriminant)) ** (1 / 3) +
-  //  (-q / 2 - Math.sqrt(discriminant)) ** (1 / 3);
-  // const x = y + h;
-  console.log(discriminant);
-  console.log("Testing Values:", q, p, (p / 3) ** 3);
+  // const depressed = y ** 3 + p * y + q;
+
+  // const yCube = -p * y - q;
+  console.log("Parameters:", { p, q, discriminant });
   console.log(a, b, c, d);
+
   if (discriminant < 0) {
+    const CD = (q / 2) ** 2 + (p / 3) ** 2;
+    const U = -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3));
+    const V = -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3));
+    const u = Math.cbrt(U);
+    const v = Math.cbrt(V);
+    console.log("Case 1: 1 Real Root, 2 Complex Roots");
+    const rootOne = u + v + h;
+    const rootTwo = u;
+    console.log("Parameters:", { p, q, U, V, rootOne });
+    (document.getElementById("result") as HTMLInputElement).value =
+      `x1=${rootOne}, x2=${rootTwo}`;
+  } else if (discriminant > 0) {
+    console.log("Testing Values:", p);
     const k = 2 * Math.sqrt(-p / 3);
     const theta =
       (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-Math.pow(p / 3, 3))));
@@ -45,42 +58,34 @@ form?.addEventListener("submit", (event) => {
     const x1 = y1 + h;
     const x2 = y2 + h;
     const x3 = y3 + h;
-    (
-      document.getElementById("result") as HTMLInputElement
-    ).value = `${a}x^3,${b}x^2,${c}x,${d}`;
-    console.log("Case 1: 3 Real Roots");
+    (document.getElementById("result") as HTMLInputElement).value =
+      `${a}x^3,${b}x^2,${c}x,${d}`;
+    console.log("Case 2: 3 Real Roots");
     console.log("Discriminant:", discriminant);
     console.log("Parameters:", { p, q, k, theta });
-    //console.log(x1, y1);
-    //console.log(x2, y2);
-    //console.log(x3, y3);
-    
-  } else if (discriminant > 0) {
-    const U = -q / 2 + Math.sqrt((q / 2) ** 2 + (p / 3) ** 3);
-    const V = -q / 2 - Math.sqrt((q / 2) ** 2 + (p / 3) ** 3);
-    const u = Math.cbrt(U);
-    const v = Math.cbrt(V);
-    // const x = y + h;
-    const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-    const rootTwo = (-b - Math.sqrt(discriminant)) / (2 * a);
-    console.log("Parameters:", { p, q, U, V });
-    (
-      document.getElementById("result") as HTMLInputElement
-    ).value = `x=${rootOne}, x2=${rootTwo}`;
-    console.log("Case 2: 1 Real Root, 2 Complex Roots");
+    console.log(x1, y1);
+    console.log(x2, y2);
+    console.log(x3, y3);
   } else {
     if (p === 0 && q === 0) {
-      const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-      (
-        document.getElementById("result") as HTMLInputElement
-      ).value = `x=${rootOne}`;
-      console.log("Case 3: 1 Real Root, Double Roots");
+      const y =
+        (-q / 2 + Math.sqrt(discriminant)) ** (1 / 3) +
+        (-q / 2 - Math.sqrt(discriminant)) ** (1 / 3);
+      const x = y + h;
+      const rootOne = x;
+      (document.getElementById("result") as HTMLInputElement).value =
+        `x=${rootOne}`;
+      console.log("Case 3: Triple Roots");
     } else if (p != 0) {
       const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-      (
-        document.getElementById("result") as HTMLInputElement
-      ).value = `x=${rootOne}`;
-      console.log("Case 4: Triple Roots");
+      (document.getElementById("result") as HTMLInputElement).value =
+        `x=${rootOne}`;
+      console.log("Case 4: 1 Real Root, Double Roots");
+    } else {
+      (document.getElementById("result") as HTMLInputElement).value =
+        `Unexpected Case`;
+      console.log("Case 5: Unexpected Result");
+      return;
     }
   }
 });
