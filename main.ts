@@ -32,22 +32,11 @@ form?.addEventListener("submit", (event) => {
   // const depressed = y ** 3 + p * y + q;
 
   // const yCube = -p * y - q;
+  // function tryCardano {}
   console.log("Parameters:", { p, q, discriminant });
   console.log(a, b, c, d);
 
-  if (discriminant < 0) {
-    const CD = (q / 2) ** 2 + (p / 3) ** 2;
-    const U = -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3));
-    const V = -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3));
-    const u = Math.cbrt(U);
-    const v = Math.cbrt(V);
-    console.log("Case 1: 1 Real Root, 2 Complex Roots");
-    const rootOne = u + v + h;
-    const rootTwo = u;
-    console.log("Parameters:", { p, q, U, V, rootOne });
-    (document.getElementById("result") as HTMLInputElement).value =
-      `x1=${rootOne}, x2=${rootTwo}`;
-  } else if (discriminant > 0) {
+  if (discriminant > 0) {
     console.log("Testing Values:", p);
     const k = 2 * Math.sqrt(-p / 3);
     const theta =
@@ -66,6 +55,20 @@ form?.addEventListener("submit", (event) => {
     console.log(x1, y1);
     console.log(x2, y2);
     console.log(x3, y3);
+  } else if (discriminant < 0) {
+    const CD = (q / 2) ** 2 + (p / 3) ** 2;
+    const u = Math.cbrt(
+      -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
+    );
+    const v = Math.cbrt(
+      -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
+    );
+    console.log("Case 1: 1 Real Root, 2 Complex Roots");
+    const rootOne = u + v + h;
+    const rootTwo = u;
+    console.log("Parameters:", { p, q, rootOne });
+    (document.getElementById("result") as HTMLInputElement).value =
+      `x1=${rootOne}, x2=${rootTwo}`;
   } else {
     if (p === 0 && q === 0) {
       const y =
