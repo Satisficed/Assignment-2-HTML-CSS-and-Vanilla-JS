@@ -11,6 +11,11 @@ form?.addEventListener("submit", (event) => {
     (document.getElementById("result") as HTMLInputElement).value =
       "a-value cannot be 0";
     console.log("Case 0: a-value is zero");
+    document
+      .querySelectorAll<HTMLTableCellElement>("td.ZeroIsA")
+      .forEach((td) => {
+        td.textContent = `n/a`;
+      });
     return;
   }
 
@@ -34,18 +39,12 @@ form?.addEventListener("submit", (event) => {
   // const yCube = -p * y - q;
   // function tryCardano {}
 
-  (document.getElementById("p") as HTMLTableCellElement).textContent = `${p}`;
-  (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
-  (
-    document.getElementById("Discriminant") as HTMLTableCellElement
-  ).textContent = `${discriminant}`;
-
   console.log("Parameters:", { p, q, discriminant });
 
   console.log(a, b, c, d);
 
   if (discriminant > 0) {
-    console.log("Testing Values:", p);
+    console.log("Testing Values:", h);
     const k = 2 * Math.sqrt(-p / 3);
     const theta =
       (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-Math.pow(p / 3, 3))));
@@ -55,6 +54,17 @@ form?.addEventListener("submit", (event) => {
     const x1 = y1 + h;
     const x2 = y2 + h;
     const x3 = y3 + h;
+    document
+      .querySelectorAll<HTMLTableCellElement>("td.ZeroIsA")
+      .forEach((td) => {
+        td.textContent = `0`;
+      });
+    (document.getElementById("x1") as HTMLTableCellElement).textContent =
+      `${x1}`;
+    (document.getElementById("x2") as HTMLTableCellElement).textContent =
+      `${x2}`;
+    (document.getElementById("x3") as HTMLTableCellElement).textContent =
+      `${x3}`;
     (document.getElementById("result") as HTMLInputElement).value =
       `${a}x^3,${b}x^2,${c}x,${d}`;
     console.log("Case 2: 3 Real Roots");
@@ -96,4 +106,11 @@ form?.addEventListener("submit", (event) => {
       return;
     }
   }
+
+  (document.getElementById("p") as HTMLTableCellElement).textContent = `${p}`;
+  (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
+  (
+    document.getElementById("Discriminant") as HTMLTableCellElement
+  ).textContent = `${discriminant}`;
+
 });
