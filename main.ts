@@ -26,7 +26,7 @@ form?.addEventListener("submit", (event) => {
   const p = (3 * a * c - b ** 2) / (3 * a ** 2);
   const q = (27 * a ** 2 * d - 9 * a * b * c + 2 * b ** 3) / (27 * a ** 3);
 
-  const discriminant =
+  const Test =
     18 * a * b * c * d -
     4 * b ** 3 * d +
     b ** 2 * c ** 2 -
@@ -34,17 +34,33 @@ form?.addEventListener("submit", (event) => {
     27 * a ** 2 * d ** 2;
 
   const h = -b / (3 * a);
-  // const depressed = y ** 3 + p * y + q;
+  const CD = -4 * p ** 3 - 27 * q ** 2;
+  const discriminant = (q / 2) ** 2 + (p / 3) ** 3;
 
   // const yCube = -p * y - q;
   // function tryCardano {}
 
-  console.log("Parameters:", { p, q, discriminant });
+  console.log("Parameters:", { p, q, discriminant, CD });
 
   console.log(a, b, c, d);
 
   if (discriminant > 0) {
-    console.log("Testing Values:", h);
+    const u = Math.cbrt(
+      -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
+    );
+    const v = Math.cbrt(
+      -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
+    );
+    console.log("Case 2: 1 Real Root, 2 Complex Roots");
+    const x1 = u + v + h;
+    console.log("Parameters:", { p, q, x1 });
+    (document.getElementById("x1") as HTMLTableCellElement).textContent =
+      `${x1}`;
+    (document.getElementById("x2") as HTMLTableCellElement).textContent =
+      `Complex`;
+    (document.getElementById("x3") as HTMLTableCellElement).textContent =
+      `Complex`;
+  } else if (discriminant < 0) {
     const k = 2 * Math.sqrt(-p / 3);
     const theta =
       (1 / 3) * Math.acos(-q / (2 * Math.sqrt(-Math.pow(p / 3, 3))));
@@ -65,25 +81,9 @@ form?.addEventListener("submit", (event) => {
       `${x2}`;
     (document.getElementById("x3") as HTMLTableCellElement).textContent =
       `${x3}`;
-    (document.getElementById("result") as HTMLInputElement).value =
-      `${a}x^3,${b}x^2,${c}x,${d}`;
-    console.log("Case 2: 3 Real Roots");
+    console.log("Case 1: 3 Real Roots");
     console.log("Discriminant:", discriminant);
     console.log("Parameters:", { p, q, k, theta });
-  } else if (discriminant < 0) {
-    const CD = (q / 2) ** 2 + (p / 3) ** 2;
-    const u = Math.cbrt(
-      -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
-    );
-    const v = Math.cbrt(
-      -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
-    );
-    console.log("Case 1: 1 Real Root, 2 Complex Roots");
-    const rootOne = u + v + h;
-    const rootTwo = u;
-    console.log("Parameters:", { p, q, rootOne });
-    (document.getElementById("result") as HTMLInputElement).value =
-      `x1=${rootOne}, x2=${rootTwo}`;
   } else {
     if (p === 0 && q === 0) {
       const y =
@@ -106,11 +106,11 @@ form?.addEventListener("submit", (event) => {
       return;
     }
   }
-
+  (document.getElementById("result") as HTMLInputElement).value =
+    `${a}x^3 + ${b}x^2 + ${c}x + ${d}`;
   (document.getElementById("p") as HTMLTableCellElement).textContent = `${p}`;
   (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
-
 });
