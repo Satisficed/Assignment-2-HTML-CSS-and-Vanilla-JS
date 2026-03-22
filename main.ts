@@ -33,7 +33,15 @@ form?.addEventListener("submit", (event) => {
 
   // const yCube = -p * y - q;
   // function tryCardano {}
+
+  (document.getElementById("p") as HTMLTableCellElement).textContent = `${p}`;
+  (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
+  (
+    document.getElementById("Discriminant") as HTMLTableCellElement
+  ).textContent = `${discriminant}`;
+
   console.log("Parameters:", { p, q, discriminant });
+
   console.log(a, b, c, d);
 
   if (discriminant > 0) {
@@ -52,9 +60,6 @@ form?.addEventListener("submit", (event) => {
     console.log("Case 2: 3 Real Roots");
     console.log("Discriminant:", discriminant);
     console.log("Parameters:", { p, q, k, theta });
-    console.log(x1, y1);
-    console.log(x2, y2);
-    console.log(x3, y3);
   } else if (discriminant < 0) {
     const CD = (q / 2) ** 2 + (p / 3) ** 2;
     const u = Math.cbrt(
