@@ -109,7 +109,7 @@ form?.addEventListener("submit", (event) => {
       return;
     }
   }
-  (document.getElementById("result") as HTMLInputElement).value =
+  (document.getElementById("result") as HTMLElement).textContent =
     `${a}x^3 + ${b}x^2 + ${c}x + ${d}`;
   (document.getElementById("p") as HTMLTableCellElement).textContent = `${p}`;
   (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;

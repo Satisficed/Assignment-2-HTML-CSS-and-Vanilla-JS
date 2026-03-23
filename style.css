@@ -1,103 +1,152 @@
-/* Basic page layout */
+/* ---------------------------
+   Basic variables & base styles
+   --------------------------- */
+:root {
+  --page-bg: #f6fff6;
+  --card-bg: #ffffff;
+  --green: #2f9e44;
+  --muted: #6b7280;
+  --border: #e6f3ea;
+  --radius: 8px;
+  --padding: 12px;
+  --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
 html, body {
   height: 100%;
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: #f7f8fa;
-  color: #111;
+  background: var(--page-bg);
+  color: #0f172a;
+  font-family: var(--font-stack);
+  line-height: 1.35;
 }
 
-/* Container/header */
+/* ---------------------------
+   Layout containers
+   --------------------------- */
 .container {
-  max-width: 900px;
-  margin: 24px auto;
-  padding: 16px;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: var(--padding);
 }
 
-/* Form styling */
+.table {
+  max-width: 800px;
+  margin: 14px auto;
+  padding: 0 6px;
+}
+
+/* ---------------------------
+   Header / Title
+   --------------------------- */
+h1 {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* ---------------------------
+   Form
+   --------------------------- */
 form#cube-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 12px;
+  gap: 8px;
+  background: var(--card-bg);
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
   align-items: center;
-  background: #fff;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(16,24,40,0.05);
 }
 
 form#cube-form label {
-  margin-right: 4px;
   font-size: 0.95rem;
+  color: var(--muted);
+  margin-right: 6px;
 }
 
 form#cube-form input[type="number"],
 form#cube-form input[readonly] {
-  width: 90px;
-  padding: 6px 8px;
-  border: 1px solid #d1d5db;
+  width: 92px;
+  padding: 6px;
+  border: 1px solid var(--border);
   border-radius: 6px;
   background: #fff;
   font-size: 0.95rem;
 }
 
 form#cube-form button[type="submit"] {
-  padding: 8px 12px;
+  background: var(--green);
+  color: #fff;
   border: none;
-  background: #0061f2;
-  color: white;
+  padding: 8px 10px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
 }
 
 form#cube-form button[type="submit"]:hover {
-  background: #004fd6;
+  background: #257b35;
 }
 
-/* Table styling */
-.table {
-  max-width: 900px;
-  margin: 18px auto;
-  padding: 0 12px;
+.result-text {
+  display: inline-block;
+  margin-left: 8px;
+  color: #0f172a;
+  font-weight: 600;
+  background: transparent;
 }
 
+/* ---------------------------
+   Table
+   --------------------------- */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
-  border-radius: 8px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(16,24,40,0.05);
+  border: 1px solid var(--border);
 }
 
 th, td {
-  padding: 10px 12px;
+  padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #eef2f7;
+  border-bottom: 1px solid var(--border);
   font-size: 0.95rem;
 }
 
 th {
-  background: #f3f4f6;
-  font-weight: 700;
+  background: #f0fff5;
+  color: var(--green);
+  font-weight: 600;
 }
 
-/* Canvas */
+/* ---------------------------
+   Canvas / Graph
+   --------------------------- */
 canvas#graph {
   display: block;
-  margin: 18px auto;
-  background: linear-gradient(180deg,#ffffff,#f3f6fb);
-  border: 1px solid #e6eef8;
+  margin: 14px auto;
   border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #ffffff;
   max-width: 95%;
 }
 
-/* Responsive */
+/* ---------------------------
+   Responsive tweaks
+   --------------------------- */
 @media (max-width: 600px) {
   form#cube-form {
     gap: 8px;
   }
-  form#cube-form input[type="number"] { width: 72px; }
-  th, td { font-size: 0.9rem; padding: 8px; }
+  form#cube-form input[type="number"] {
+    width: 72px;
+  }
+  th, td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }
