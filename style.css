@@ -130,7 +130,7 @@ canvas#graph {
   display: block;
   margin: 14px auto;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 5px solid var(--border);
   background: #ffffff;
   max-width: 95%;
 }
@@ -147,6 +147,6 @@ canvas#graph {
   }
   th, td {
     font-size: 0.9rem;
-    padding: 8px;
+    padding: 80px;
   }
 }

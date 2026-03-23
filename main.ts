@@ -27,6 +27,17 @@ form?.addEventListener("submit", (event) => {
   const h = -b / (3 * a);
   const discriminant = (q / 2) ** 2 + (p / 3) ** 3;
 
+  const canvas = document.getElementById("graph") as HTMLCanvasElement;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d")!;
+  ctx.clearRect(0, 0, 800, 500);
+  ctx.moveTo(canvas.width / 2, 0);
+  ctx.lineTo(canvas.width / 2, canvas.height);
+  ctx.stroke();
+  ctx.moveTo(0, canvas.height / 2);
+  ctx.lineTo(canvas.width, canvas.height / 2);
+  ctx.stroke();
+
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
     const u = Math.cbrt(
@@ -116,16 +127,10 @@ form?.addEventListener("submit", (event) => {
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
-  const canvas = document.getElementById("graph") as HTMLCanvasElement;;
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d")!;
-  ctx.moveTo(50, 100); // starting point
-  ctx.lineTo(300, 200); // ending point
-  ctx.stroke(); // actually draw it
   ctx.beginPath();
-  ctx.moveTo(50, 100);
-  ctx.lineTo(150, 120);
-  ctx.lineTo(250, 80);
-  ctx.lineTo(350, 140);
+  ctx.moveTo(a, a);
+  ctx.lineTo(b, b);
+  ctx.lineTo(c, c);
+  ctx.lineTo(q, d);
   ctx.stroke();
 });
