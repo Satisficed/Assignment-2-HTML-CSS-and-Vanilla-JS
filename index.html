@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <header class="container">
       <h1><i>Cubic Solver</i></h1>
       <form id="cube-form">
         <label for="a"> a-value: </label>
@@ -23,9 +23,9 @@
         <label for="result">Result: </label>
         <input type="result" id="result" readonly />
       </form>
-    </div>
+    </header>
 
-    <div class="table">
+    <section class="table">
       <table>
         <tr>
           <th>p</th>
@@ -60,7 +60,10 @@
           <td id="y3" class="ZeroIsA">n/a</td>
         </tr>
       </table>
-    </div>
+    </section>
+
+    <canvas id="graph" width="600" height="400"></canvas>
+    
     <script src="main.ts"></script>
   </body>
 </html>

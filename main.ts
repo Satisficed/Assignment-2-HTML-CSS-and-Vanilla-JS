@@ -40,9 +40,6 @@ form?.addEventListener("submit", (event) => {
   // const yCube = -p * y - q;
   // function tryCardano {}
 
-  console.log("Parameters:", { p, q, discriminant, CD });
-
-  console.log(a, b, c, d);
 
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
@@ -132,5 +129,16 @@ form?.addEventListener("submit", (event) => {
   (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
-  ).textContent = `${discriminant}`;
+  ).textContent = `${discriminant}`;  
+  const canvas = document.getElementById("graph");
+  const ctx = canvas.getContext("2d");
+  ctx.moveTo(50, 100); // starting point
+  ctx.lineTo(300, 200); // ending point
+  ctx.stroke(); // actually draw it
+  ctx.beginPath();
+ctx.moveTo(50, 100);
+ctx.lineTo(150, 120);
+ctx.lineTo(250, 80);
+ctx.lineTo(350, 140);
+ctx.stroke();
 });
