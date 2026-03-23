@@ -6,7 +6,6 @@ form?.addEventListener("submit", (event) => {
   const formData = new FormData(form);
 
   const a: number = Number(formData.get("a"));
-
   if (a === 0) {
     (document.getElementById("result") as HTMLInputElement).value =
       "a-value cannot be 0";
@@ -25,21 +24,8 @@ form?.addEventListener("submit", (event) => {
 
   const p = (3 * a * c - b ** 2) / (3 * a ** 2);
   const q = (27 * a ** 2 * d - 9 * a * b * c + 2 * b ** 3) / (27 * a ** 3);
-
-  // const Test =
-  //  18 * a * b * c * d -
-  //  4 * b ** 3 * d +
-  //  b ** 2 * c ** 2 -
-  //  4 * a * c ** 3 -
-  //  27 * a ** 2 * d ** 2;
-
   const h = -b / (3 * a);
-  const CD = -4 * p ** 3 - 27 * q ** 2;
   const discriminant = (q / 2) ** 2 + (p / 3) ** 3;
-
-  // const yCube = -p * y - q;
-  // function tryCardano {}
-
 
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
@@ -129,16 +115,17 @@ form?.addEventListener("submit", (event) => {
   (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
-  ).textContent = `${discriminant}`;  
-  const canvas = document.getElementById("graph");
-  const ctx = canvas.getContext("2d");
+  ).textContent = `${discriminant}`;
+  const canvas = document.getElementById("graph") as HTMLCanvasElement;;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d")!;
   ctx.moveTo(50, 100); // starting point
   ctx.lineTo(300, 200); // ending point
   ctx.stroke(); // actually draw it
   ctx.beginPath();
-ctx.moveTo(50, 100);
-ctx.lineTo(150, 120);
-ctx.lineTo(250, 80);
-ctx.lineTo(350, 140);
-ctx.stroke();
+  ctx.moveTo(50, 100);
+  ctx.lineTo(150, 120);
+  ctx.lineTo(250, 80);
+  ctx.lineTo(350, 140);
+  ctx.stroke();
 });
