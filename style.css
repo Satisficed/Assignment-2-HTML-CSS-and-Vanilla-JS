@@ -1,61 +1,103 @@
-* {
-  margin: 0px;
-  padding: 5px;
+/* Basic page layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #f7f8fa;
+  color: #111;
 }
 
-.box {
-  height: 200px;
-  width: 100px;
-}
-
-.a {
-  align-self: center;
-}
-
+/* Container/header */
 .container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+/* Form styling */
+form#cube-form {
   display: flex;
-  align-self: center;
-  justify-items: center;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 8px 12px;
   align-items: center;
-  gap: 20px;
-  width: auto;
-  min-height: 200;
-  height: 200;
-  padding: 5;
-  background-color: rgb(122, 170, 206);
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(16,24,40,0.05);
 }
 
-h1 {
-  align-self: top, center;
-  padding: 10px;
-  color: rgb(247, 248, 240);
+form#cube-form label {
+  margin-right: 4px;
+  font-size: 0.95rem;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+form#cube-form input[type="number"],
+form#cube-form input[readonly] {
+  width: 90px;
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.95rem;
 }
 
-.a {
-  grid-area: a;
-  background-color: red;
+form#cube-form button[type="submit"] {
+  padding: 8px 12px;
+  border: none;
+  background: #0061f2;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.b {
-  grid-area: b;
-  background-color: green;
+form#cube-form button[type="submit"]:hover {
+  background: #004fd6;
 }
 
-.c {
-  grid-area: c;
-  background-color: blue;
+/* Table styling */
+.table {
+  max-width: 900px;
+  margin: 18px auto;
+  padding: 0 12px;
 }
 
-.d {
-  grid-area: d;
-  background-color: violet;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(16,24,40,0.05);
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eef2f7;
+  font-size: 0.95rem;
+}
+
+th {
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+/* Canvas */
+canvas#graph {
+  display: block;
+  margin: 18px auto;
+  background: linear-gradient(180deg,#ffffff,#f3f6fb);
+  border: 1px solid #e6eef8;
+  border-radius: 6px;
+  max-width: 95%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form#cube-form {
+    gap: 8px;
+  }
+  form#cube-form input[type="number"] { width: 72px; }
+  th, td { font-size: 0.9rem; padding: 8px; }
 }
