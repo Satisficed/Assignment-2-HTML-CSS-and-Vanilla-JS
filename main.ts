@@ -30,6 +30,10 @@ form?.addEventListener("submit", (event) => {
   const canvas = document.getElementById("graph") as HTMLCanvasElement;
   if (!canvas) return;
 
+  // make axis 
+  // draw grid
+  // put roots as circles
+  // make 
   const ctx = canvas.getContext("2d")!;
   ctx.strokeStyle = "black";
   ctx.clearRect(0, 0, 800, 500);
@@ -39,6 +43,7 @@ form?.addEventListener("submit", (event) => {
   ctx.moveTo(0, canvas.height / 2);
   ctx.lineTo(canvas.width, canvas.height / 2);
   ctx.stroke();
+  ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
@@ -142,21 +147,24 @@ form?.addEventListener("submit", (event) => {
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
 
- 
-  for (let i = 10; i < 30; i++) { 
+  for (let i = 10; i < 60; i++) { 
     ctx.strokeStyle = "blue";
     ctx.beginPath();
-    ctx.moveTo(i * 20, 0);
+    ctx.moveTo(i * 20, -100);
     ctx.lineTo(i * 20, canvas.height);
     ctx.moveTo(0, i * 20);
     ctx.lineTo(canvas.width, i * 20);
     ctx.stroke();
   }
+  
   ctx.strokeStyle = "red";
-
+  ctx.beginPath();
   ctx.moveTo(canvas.width / 2, canvas.height / 2);
   ctx.lineTo(20 + canvas.width / 2, 10 + canvas.height / 2);
+  ctx.arc(75, 75, 50, 0, Math.PI * 2, true);
+  ctx.fill
   ctx.lineTo(30 + canvas.width / 2, 20 + canvas.height / 2);
   ctx.lineTo(40 + canvas.width / 2, 30 + canvas.height / 2);
   ctx.stroke();
+  
 });
