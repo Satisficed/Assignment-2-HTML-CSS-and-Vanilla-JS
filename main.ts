@@ -29,6 +29,7 @@ form?.addEventListener("submit", (event) => {
 
   const canvas = document.getElementById("graph") as HTMLCanvasElement;
   if (!canvas) return;
+
   const ctx = canvas.getContext("2d")!;
   ctx.clearRect(0, 0, 800, 500);
   ctx.moveTo(canvas.width / 2, 0);
@@ -50,10 +51,12 @@ form?.addEventListener("submit", (event) => {
     document
       .querySelectorAll<HTMLTableCellElement>("td.ZeroIsA")
       .forEach((td) => {
-        td.textContent = `Complex`;
+        td.textContent = `Imaginary`;
       });
     (document.getElementById("x1") as HTMLTableCellElement).textContent =
       `${x1}`;
+    (document.getElementById("y1") as HTMLTableCellElement).textContent =
+      `0`;
   } else if (discriminant < 0) {
     console.log("Case 1: 3 Real Roots");
     const k = 2 * Math.sqrt(-p / 3);
@@ -128,9 +131,11 @@ form?.addEventListener("submit", (event) => {
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
   ctx.beginPath();
-  ctx.moveTo(a, a);
-  ctx.lineTo(b, b);
-  ctx.lineTo(c, c);
-  ctx.lineTo(q, d);
+  ctx.moveTo(a, 0);
+  ctx.lineTo(b, 0);
+  ctx.lineTo(c, 0);
+  ctx.arcTo;
+  ctx.lineTo(canvas.width/2, canvas.height/2);
+  
   ctx.stroke();
 });
