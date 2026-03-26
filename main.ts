@@ -33,21 +33,23 @@ form?.addEventListener("submit", (event) => {
   // put roots as circles
   // Canvas presets
   const ctx = canvas.getContext("2d")!;
-  ctx.beginPath();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = "black";
+  
 
   // x and y axis
+  ctx.beginPath();
   ctx.moveTo(canvas.width / 2, 0);
   ctx.lineTo(canvas.width / 2, canvas.height);
   ctx.stroke();
   ctx.moveTo(0, canvas.height / 2);
   ctx.lineTo(canvas.width, canvas.height / 2);
+  ctx.lineWidth = 2;
   ctx.stroke();
-  
+  ctx.strokeStyle = "black";
   // 15x15 grid for canvas graph
-  ctx.strokeStyle = "lime";
+  ctx.lineWidth = 1;
   for (let i = 1; i < 30; i++) {
+    ctx.strokeStyle = "grey";
     ctx.beginPath();
     ctx.moveTo(i * 20, -100);
     ctx.lineTo(i * 20, canvas.height);
@@ -55,7 +57,7 @@ form?.addEventListener("submit", (event) => {
     ctx.lineTo(canvas.width, i * 20);
     ctx.stroke();
   }
-
+  
   ctx.strokeStyle = "crimson";
   ctx.fillStyle = "crimson";
 
