@@ -2,7 +2,7 @@
    Basic variables & base styles
    --------------------------- */
 :root {
-  --page-bg: #f6fff6;
+  --page-bg: #ffffff;
   --card-bg: #ffffff;
   --green: #2f9e44;
   --muted: #0d40a5;
@@ -72,7 +72,8 @@ form#cube-form input[readonly] {
   padding: 6px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  background: #fff;
+  background: var(--green);
+  color: #fff;
   font-size: 0.95rem;
 }
 
@@ -107,6 +108,8 @@ table {
   background: var(--card-bg);
   border-radius: var(--radius);
   overflow: hidden;
+  background-color: var(--green);
+  color: #fff;
   border: 1px solid var(--border);
 }
 
@@ -131,7 +134,7 @@ canvas#graph {
   margin: 14px auto;
   border-radius: 6px;
   border: 5px solid var(--border);
-  background: #ffffff;
+  background: #ffd6d6;
   max-width: 95%;
 }
 

@@ -44,10 +44,10 @@ form?.addEventListener("submit", (event) => {
   ctx.moveTo(0, canvas.height / 2);
   ctx.lineTo(canvas.width, canvas.height / 2);
   ctx.stroke();
-
+  
   // 15x15 grid for canvas graph
+  ctx.strokeStyle = "lime";
   for (let i = 1; i < 30; i++) {
-    ctx.strokeStyle = "lightgrey";
     ctx.beginPath();
     ctx.moveTo(i * 20, -100);
     ctx.lineTo(i * 20, canvas.height);
@@ -69,6 +69,7 @@ form?.addEventListener("submit", (event) => {
       -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
     );
     const x1 = u + v + h;
+
     document
       .querySelectorAll<HTMLTableCellElement>("td.ZeroIsA")
       .forEach((td) => {
