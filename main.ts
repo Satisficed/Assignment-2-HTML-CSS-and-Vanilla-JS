@@ -6,6 +6,8 @@ form?.addEventListener("submit", (event) => {
   const formData = new FormData(form);
 
   const a: number = Number(formData.get("a"));
+
+  // Checking if a = 0, otherwise proceed.
   if (a === 0) {
     (document.getElementById("result") as HTMLInputElement).value =
       "a-value cannot be 0";
@@ -40,7 +42,7 @@ form?.addEventListener("submit", (event) => {
   ctx.strokeStyle = "grey";
   ctx.beginPath();
   for (let i = 1; i < 30; i++) {
-    ctx.moveTo(i * 20, -100);
+    ctx.moveTo(i * 20, 0);
     ctx.lineTo(i * 20, canvas.height);
     ctx.moveTo(0, i * 20);
     ctx.lineTo(canvas.width, i * 20);
@@ -59,15 +61,29 @@ form?.addEventListener("submit", (event) => {
   ctx.stroke();
 
   ctx.fillStyle = "crimson";
+  ctx.strokeStyle = "darkred";
   ctx.lineWidth = 1;
+  
+  function drawRoot(x: number){
+    
+    ctx.beginPath();
+    ctx.arc(x * 20 + canvas.width / 2, canvas.height / 2, 4, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    
+    return;
+  }
+
+    
   // Cases for Cubic Equation
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
     const u = Math.cbrt(
-      -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3))
+      -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
     );
     const v = Math.cbrt(
-      -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3))
+      -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
     );
     const x1 = u + v + h;
 
@@ -76,23 +92,10 @@ form?.addEventListener("submit", (event) => {
       .forEach((td) => {
         td.textContent = `Imaginary`;
       });
-    (
-      document.getElementById("x1") as HTMLTableCellElement
-    ).textContent = `${x1}`;
+    (document.getElementById("x1") as HTMLTableCellElement).textContent =
+      `${x1}`;
     (document.getElementById("y1") as HTMLTableCellElement).textContent = `0`;
-
-    ctx.beginPath();
-    
-    ctx.arc(
-      x1 * 15 + canvas.width / 2,
-      canvas.height / 2,
-      4,
-      13,
-      Math.PI * 2,
-      true
-    );
-    ctx.fill();
-    ctx.stroke();
+    drawRoot(x1);
   } else if (discriminant < 0) {
     console.log("Case 1: 3 Real Roots");
     const k = 2 * Math.sqrt(-p / 3);
@@ -106,23 +109,23 @@ form?.addEventListener("submit", (event) => {
       .forEach((td) => {
         td.textContent = `0`;
       });
-    (
-      document.getElementById("x1") as HTMLTableCellElement
-    ).textContent = `${x1}`;
-    (
-      document.getElementById("x2") as HTMLTableCellElement
-    ).textContent = `${x2}`;
-    (
-      document.getElementById("x3") as HTMLTableCellElement
-    ).textContent = `${x3}`;
+    (document.getElementById("x1") as HTMLTableCellElement).textContent =
+      `${x1}`;
+    (document.getElementById("x2") as HTMLTableCellElement).textContent =
+      `${x2}`;
+    (document.getElementById("x3") as HTMLTableCellElement).textContent =
+      `${x3}`;
+    drawRoot(x1);
+    drawRoot(x2);
+    drawRoot(x3);
   } else {
     if (p === 0 && q === 0) {
       console.log("Case 3: Triple Roots");
       const u = Math.cbrt(
-        -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3))
+        -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
       );
       const v = Math.cbrt(
-        -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3))
+        -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
       );
       const x1 = u + v + h;
       document
@@ -130,15 +133,12 @@ form?.addEventListener("submit", (event) => {
         .forEach((td) => {
           td.textContent = `0`;
         });
-      (
-        document.getElementById("x1") as HTMLTableCellElement
-      ).textContent = `${x1}`;
-      (
-        document.getElementById("x2") as HTMLTableCellElement
-      ).textContent = `${x1}`;
-      (
-        document.getElementById("x3") as HTMLTableCellElement
-      ).textContent = `${x1}`;
+      (document.getElementById("x1") as HTMLTableCellElement).textContent =
+        `${x1}`;
+      (document.getElementById("x2") as HTMLTableCellElement).textContent =
+        `${x1}`;
+      (document.getElementById("x3") as HTMLTableCellElement).textContent =
+        `${x1}`;
       ctx.beginPath();
       ctx.arc(
         x1 * 15 + canvas.width / 2,
@@ -146,16 +146,16 @@ form?.addEventListener("submit", (event) => {
         4,
         13,
         Math.PI * 2,
-        true
+        true,
       );
       ctx.fill();
     } else if (p != 0) {
       console.log("Case 4: 1 Real Root, Double Roots");
       const u = Math.cbrt(
-        -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3))
+        -q / 2 + Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
       );
       const v = Math.cbrt(
-        -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3))
+        -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
       );
       const x1 = u + v + h;
       const x2 = Math.cbrt(q / 2) + h;
@@ -164,15 +164,12 @@ form?.addEventListener("submit", (event) => {
         .forEach((td) => {
           td.textContent = `0`;
         });
-      (
-        document.getElementById("x1") as HTMLTableCellElement
-      ).textContent = `${x2}`;
-      (
-        document.getElementById("x2") as HTMLTableCellElement
-      ).textContent = `${x1}`;
-      (
-        document.getElementById("x3") as HTMLTableCellElement
-      ).textContent = `${x1}`;
+      (document.getElementById("x1") as HTMLTableCellElement).textContent =
+        `${x2}`;
+      (document.getElementById("x2") as HTMLTableCellElement).textContent =
+        `${x1}`;
+      (document.getElementById("x3") as HTMLTableCellElement).textContent =
+        `${x1}`;
       ctx.beginPath();
       ctx.arc(
         x1 * 15 + canvas.width / 2,
@@ -180,7 +177,7 @@ form?.addEventListener("submit", (event) => {
         4,
         13,
         Math.PI * 2,
-        true
+        true,
       );
       ctx.fill();
       ctx.moveTo(canvas.width / 2, canvas.height / 2);
@@ -190,21 +187,12 @@ form?.addEventListener("submit", (event) => {
       return;
     }
   }
-  (
-    document.getElementById("result") as HTMLElement
-  ).textContent = `${a}x^3 + ${b}x^2 + ${c}x + ${d}`;
+  (document.getElementById("result") as HTMLElement).textContent =
+    `${a}x^3 + ${b}x^2 + ${c}x + ${d}`;
   (document.getElementById("p") as HTMLTableCellElement).textContent = `${p}`;
   (document.getElementById("q") as HTMLTableCellElement).textContent = `${q}`;
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
-  ctx.stroke();
-  ctx.strokeStyle = "crimson";
-  ctx.beginPath;
-  
-  ctx.moveTo(canvas.width / 2, canvas.height / 2);
-  ctx.lineTo(20 + canvas.width / 2, 10 + canvas.height / 2);
-  ctx.lineTo(30 + canvas.width / 2, 20 + canvas.height / 2);
-  ctx.lineTo(40 + canvas.width / 2, 30 + canvas.height / 2);
-  ctx.stroke();
+
 });
