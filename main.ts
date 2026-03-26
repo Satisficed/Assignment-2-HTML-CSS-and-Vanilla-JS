@@ -79,7 +79,14 @@ form?.addEventListener("submit", (event) => {
     (document.getElementById("y1") as HTMLTableCellElement).textContent = `0`;
 
     ctx.beginPath();
-    ctx.arc(100, 75, 4, 13, Math.PI * 2, true);
+    ctx.arc(
+      x1 * 15 + canvas.width / 2,
+      canvas.height / 2,
+      4,
+      13,
+      Math.PI * 2,
+      true,
+    );
     ctx.fill();
     ctx.stroke();
   } else if (discriminant < 0) {
@@ -122,6 +129,17 @@ form?.addEventListener("submit", (event) => {
         `${x1}`;
       (document.getElementById("x3") as HTMLTableCellElement).textContent =
         `${x1}`;
+      ctx.beginPath();
+      ctx.arc(
+        x1 * 15 + canvas.width / 2,
+        canvas.height / 2,
+        4,
+        13,
+        Math.PI * 2,
+        true,
+      );
+      ctx.fill();
+      ctx.stroke();
     } else if (p != 0) {
       console.log("Case 4: 1 Real Root, Double Roots");
       const u = Math.cbrt(
@@ -143,6 +161,18 @@ form?.addEventListener("submit", (event) => {
         `${x1}`;
       (document.getElementById("x3") as HTMLTableCellElement).textContent =
         `${x1}`;
+      ctx.beginPath();
+      ctx.arc(
+        x1 * 15 + canvas.width / 2,
+        canvas.height / 2,
+        4,
+        13,
+        Math.PI * 2,
+        true,
+      );
+      ctx.fill();
+      ctx.moveTo(canvas.width / 2, canvas.height / 2);
+      ctx.stroke();
     } else {
       console.log("Case 5: Unexpected Result");
       return;
@@ -156,7 +186,7 @@ form?.addEventListener("submit", (event) => {
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
 
-  ctx.strokeStyle = "navyBlue";
+  ctx.strokeStyle = "lime";
   ctx.beginPath;
   ctx.moveTo(canvas.width / 2, canvas.height / 2);
   ctx.lineTo(20 + canvas.width / 2, 10 + canvas.height / 2);
