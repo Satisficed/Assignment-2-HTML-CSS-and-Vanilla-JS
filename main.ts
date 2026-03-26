@@ -59,7 +59,7 @@ form?.addEventListener("submit", (event) => {
   ctx.stroke();
 
   ctx.fillStyle = "crimson";
-  ctx.strokeStyle = "crimson";
+  ctx.lineWidth = 1;
   // Cases for Cubic Equation
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
@@ -82,6 +82,7 @@ form?.addEventListener("submit", (event) => {
     (document.getElementById("y1") as HTMLTableCellElement).textContent = `0`;
 
     ctx.beginPath();
+    
     ctx.arc(
       x1 * 15 + canvas.width / 2,
       canvas.height / 2,
@@ -148,7 +149,6 @@ form?.addEventListener("submit", (event) => {
         true
       );
       ctx.fill();
-      ctx.stroke();
     } else if (p != 0) {
       console.log("Case 4: 1 Real Root, Double Roots");
       const u = Math.cbrt(
@@ -198,9 +198,10 @@ form?.addEventListener("submit", (event) => {
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
-
+  ctx.stroke();
+  ctx.strokeStyle = "crimson";
   ctx.beginPath;
-  ctx.strokeStyle = "lime";
+  
   ctx.moveTo(canvas.width / 2, canvas.height / 2);
   ctx.lineTo(20 + canvas.width / 2, 10 + canvas.height / 2);
   ctx.lineTo(30 + canvas.width / 2, 20 + canvas.height / 2);
