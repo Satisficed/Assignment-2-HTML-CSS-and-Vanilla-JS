@@ -63,19 +63,17 @@ form?.addEventListener("submit", (event) => {
   ctx.fillStyle = "crimson";
   ctx.strokeStyle = "darkred";
   ctx.lineWidth = 1;
-  
-  function drawRoot(x: number){
-    
+
+  function drawRoot(x: number) {
     ctx.beginPath();
     ctx.arc(x * 20 + canvas.width / 2, canvas.height / 2, 4, 0, Math.PI * 2);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-    
+
     return;
   }
 
-    
   // Cases for Cubic Equation
   if (discriminant > 0) {
     console.log("Case 2: 1 Real Root, 2 Complex Roots");
@@ -86,7 +84,6 @@ form?.addEventListener("submit", (event) => {
       -q / 2 - Math.sqrt(Math.abs((q / 2) ** 2 + (p / 3) ** 3)),
     );
     const x1 = u + v + h;
-
     document
       .querySelectorAll<HTMLTableCellElement>("td.ZeroIsA")
       .forEach((td) => {
@@ -139,16 +136,7 @@ form?.addEventListener("submit", (event) => {
         `${x1}`;
       (document.getElementById("x3") as HTMLTableCellElement).textContent =
         `${x1}`;
-      ctx.beginPath();
-      ctx.arc(
-        x1 * 15 + canvas.width / 2,
-        canvas.height / 2,
-        4,
-        13,
-        Math.PI * 2,
-        true,
-      );
-      ctx.fill();
+      drawRoot(x1);
     } else if (p != 0) {
       console.log("Case 4: 1 Real Root, Double Roots");
       const u = Math.cbrt(
@@ -170,21 +158,10 @@ form?.addEventListener("submit", (event) => {
         `${x1}`;
       (document.getElementById("x3") as HTMLTableCellElement).textContent =
         `${x1}`;
-      ctx.beginPath();
-      ctx.arc(
-        x1 * 15 + canvas.width / 2,
-        canvas.height / 2,
-        4,
-        13,
-        Math.PI * 2,
-        true,
-      );
-      ctx.fill();
-      ctx.moveTo(canvas.width / 2, canvas.height / 2);
-      ctx.stroke();
+    drawRoot(x2);
+    drawRoot(x1);
     } else {
       console.log("Case 5: Unexpected Result");
-      return;
     }
   }
   (document.getElementById("result") as HTMLElement).textContent =
@@ -194,5 +171,4 @@ form?.addEventListener("submit", (event) => {
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
-
 });
