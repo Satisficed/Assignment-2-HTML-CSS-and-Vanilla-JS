@@ -60,6 +60,15 @@ form?.addEventListener("submit", (event) => {
   ctx.lineWidth = 1.5;
   ctx.stroke();
 
+  ctx.strokeStyle = "green";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(canvas.width / 2, canvas.height / 2);
+  for (let i = -15; i < 16; i++){
+  ctx.lineTo(i + canvas.width / 2, (a * i ** 3 + b * 2 ** i + c * i + d) * 20 + canvas.height / 2);
+  }
+  ctx.stroke();
+
   ctx.fillStyle = "crimson";
   ctx.strokeStyle = "darkred";
   ctx.lineWidth = 1;
@@ -70,7 +79,6 @@ form?.addEventListener("submit", (event) => {
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-
     return;
   }
 
@@ -171,4 +179,5 @@ form?.addEventListener("submit", (event) => {
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
+  
 });
