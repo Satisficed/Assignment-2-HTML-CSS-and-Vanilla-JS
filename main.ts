@@ -58,6 +58,7 @@ form?.addEventListener("submit", (event) => {
   ctx.lineWidth = 1.5;
   ctx.stroke();
 
+  // Cubic Equation line
   ctx.strokeStyle = "darkgreen";
   ctx.lineWidth = 3;
   ctx.beginPath();
@@ -73,10 +74,10 @@ form?.addEventListener("submit", (event) => {
   }
   ctx.stroke();
 
+  // Draw root(s) function and preset
   ctx.fillStyle = "crimson";
   ctx.strokeStyle = "darkred";
   ctx.lineWidth = 1;
-
   function drawRoot(x: number) {
     ctx.beginPath();
     ctx.arc(x * 20 + canvas.width / 2, canvas.height / 2, 4, 0, Math.PI * 2);
