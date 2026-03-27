@@ -63,10 +63,19 @@ form?.addEventListener("submit", (event) => {
   ctx.strokeStyle = "green";
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(canvas.width / 2, canvas.height / 2);
-  for (let i = -15; i < 16; i++){
-  ctx.lineTo(i + canvas.width / 2, (a * i ** 3 + b * 2 ** i + c * i + d) * 20 + canvas.height / 2);
+  ctx.beginPath();
+  for (let i = 0; i <= canvas.width; i++) {
+    const j =
+      canvas.height / 2 -
+      (a * ((i - canvas.width / 2) / 20) ** 3 +
+        b * ((i - canvas.width / 2) / 20) ** 2 +
+        c * ((i - canvas.width / 2) / 20) +
+        d) *
+        20;
+    if (i === 0) ctx.moveTo(i, j);
+    else ctx.lineTo(i, j);
   }
+  ctx.stroke();
   ctx.stroke();
 
   ctx.fillStyle = "crimson";
@@ -166,8 +175,8 @@ form?.addEventListener("submit", (event) => {
         `${x1}`;
       (document.getElementById("x3") as HTMLTableCellElement).textContent =
         `${x1}`;
-    drawRoot(x2);
-    drawRoot(x1);
+      drawRoot(x2);
+      drawRoot(x1);
     } else {
       console.log("Case 5: Unexpected Result");
     }
@@ -179,5 +188,4 @@ form?.addEventListener("submit", (event) => {
   (
     document.getElementById("Discriminant") as HTMLTableCellElement
   ).textContent = `${discriminant}`;
-  
 });
