@@ -63,7 +63,6 @@ form?.addEventListener("submit", (event) => {
   ctx.strokeStyle = "green";
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.beginPath();
   for (let i = 0; i <= canvas.width; i++) {
     const j =
       canvas.height / 2 -
@@ -75,7 +74,6 @@ form?.addEventListener("submit", (event) => {
     if (i === 0) ctx.moveTo(i, j);
     else ctx.lineTo(i, j);
   }
-  ctx.stroke();
   ctx.stroke();
 
   ctx.fillStyle = "crimson";
