@@ -138,18 +138,3 @@ canvas#graph {
   max-width: 95%;
 }
 
-/* ---------------------------
-   Responsive tweaks
-   --------------------------- */
-@media (max-width: 600px) {
-  form#cube-form {
-    gap: 8px;
-  }
-  form#cube-form input[type="number"] {
-    width: 72px;
-  }
-  th, td {
-    font-size: 0.9rem;
-    padding: 80px;
-  }
-}

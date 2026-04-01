@@ -59,7 +59,7 @@ form?.addEventListener("submit", (event) => {
   ctx.stroke();
 
   // Cubic Equation line
-  ctx.strokeStyle = "darkgreen";
+  ctx.strokeStyle = "darkblue";
   ctx.lineWidth = 3;
   ctx.beginPath();
   for (let i = 0; i <= canvas.width; i++) {
